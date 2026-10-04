@@ -1,0 +1,1174 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #28345f 0%,
+            #11152e 35%,
+            #050611 100%
+        );
+
+    color: #fff;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   MAGICAL OPENING
+========================= */
+
+#opening {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle,
+            #303b72 0%,
+            #0b0d1d 70%
+        );
+
+    transition:
+        opacity 1.5s ease,
+        visibility 1.5s ease;
+}
+
+#opening.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.opening-content {
+    text-align: center;
+    animation: appear 2s ease;
+}
+
+.opening-content h1 {
+    color: #e8c75a;
+
+    font-size:
+        clamp(
+            35px,
+            7vw,
+            70px
+        );
+
+    text-shadow:
+        0 0 10px #e8c75a,
+        0 0 30px #e8c75a;
+}
+
+.opening-content p {
+    font-size: 20px;
+    color: #ddd;
+}
+
+.sparkle {
+    font-size: 60px;
+    color: #ffe88a;
+
+    animation:
+        sparkle 1.5s infinite;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    border: 2px solid #e8c75a;
+
+    background:
+        rgba(0, 0, 0, 0.5);
+
+    color: #f9df79;
+
+    padding: 14px 28px;
+
+    border-radius: 30px;
+
+    font-family: Georgia, serif;
+    font-size: 17px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #e8c75a;
+    color: #111;
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 25px #e8c75a;
+}
+
+
+/* =========================
+   STARS
+========================= */
+
+.stars,
+.stars::before,
+.stars::after {
+    position: fixed;
+    inset: 0;
+
+    content: "";
+
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(
+            circle,
+            white 1px,
+            transparent 2px
+        ),
+        radial-gradient(
+            circle,
+            #f5d77b 1px,
+            transparent 2px
+        ),
+        radial-gradient(
+            circle,
+            white 1px,
+            transparent 2px
+        );
+
+    background-size:
+        120px 120px,
+        180px 180px,
+        250px 250px;
+
+    animation:
+        starsMove 15s linear infinite;
+
+    opacity: 0.7;
+}
+
+.stars::before {
+    animation-duration: 25s;
+    opacity: 0.5;
+}
+
+.stars::after {
+    animation-duration: 35s;
+    opacity: 0.4;
+}
+
+@keyframes starsMove {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(120px);
+    }
+}
+
+
+/* =========================
+   FLOATING CANDLES
+========================= */
+
+.candles {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+    z-index: 2;
+}
+
+.candle {
+    position: absolute;
+
+    font-size: 35px;
+
+    animation:
+        floating 5s ease-in-out infinite;
+
+    filter:
+        drop-shadow(
+            0 0 12px #ffd86b
+        );
+}
+
+.c1 {
+    top: 12%;
+    left: 8%;
+}
+
+.c2 {
+    top: 25%;
+    right: 8%;
+    animation-delay: 1s;
+}
+
+.c3 {
+    top: 55%;
+    left: 5%;
+    animation-delay: 2s;
+}
+
+.c4 {
+    top: 65%;
+    right: 7%;
+    animation-delay: 3s;
+}
+
+.c5 {
+    top: 40%;
+    right: 20%;
+    animation-delay: 1.5s;
+}
+
+@keyframes floating {
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(-3deg);
+    }
+
+    50% {
+        transform:
+            translateY(-35px)
+            rotate(3deg);
+    }
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+    position: relative;
+    z-index: 5;
+
+    width:
+        min(
+            1000px,
+            90%
+        );
+
+    margin: auto;
+
+    padding:
+        80px 20px 40px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   CREST
+========================= */
+
+.crest {
+    display: inline-flex;
+
+    width: 90px;
+    height: 90px;
+
+    justify-content: center;
+    align-items: center;
+
+    border:
+        3px solid #e8c75a;
+
+    border-radius: 50%;
+
+    font-size: 45px;
+    color: #e8c75a;
+
+    box-shadow:
+        0 0 20px #e8c75a,
+        inset 0 0 20px
+        rgba(
+            232,
+            199,
+            90,
+            0.3
+        );
+
+    animation:
+        glow 2s infinite alternate;
+}
+
+.welcome {
+    margin-top: 30px;
+
+    letter-spacing: 5px;
+    color: #cfcfcf;
+}
+
+.title {
+    margin: 10px 0;
+
+    font-size:
+        clamp(
+            50px,
+            10vw,
+            100px
+        );
+
+    color: #e8c75a;
+
+    letter-spacing: 10px;
+
+    text-shadow:
+        0 0 10px #e8c75a,
+        0 0 35px
+        rgba(
+            232,
+            199,
+            90,
+            0.5
+        );
+}
+
+.line {
+    width: 250px;
+    height: 2px;
+
+    margin: 20px auto;
+
+    background: #e8c75a;
+
+    box-shadow:
+        0 0 15px #e8c75a;
+}
+
+.container h2 {
+    font-size: 32px;
+    color: #f5e8b0;
+}
+
+.teacher {
+    font-style: italic;
+    color: #cfcfcf;
+}
+
+
+/* =========================
+   HOUSES
+========================= */
+
+.houses {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin: 45px 0;
+}
+
+.house {
+    padding: 25px 10px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.06
+        );
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.2
+        );
+
+    transition: 0.4s;
+}
+
+.house:hover {
+    transform:
+        translateY(-12px)
+        scale(1.03);
+
+    box-shadow:
+        0 0 25px
+        rgba(
+            255,
+            255,
+            255,
+            0.25
+        );
+}
+
+.house-icon {
+    font-size: 45px;
+}
+
+.house h3 {
+    margin-bottom: 5px;
+}
+
+.house p {
+    margin: 0;
+    color: #ccc;
+}
+
+.gryffindor {
+    border-color: #c0392b;
+}
+
+.slytherin {
+    border-color: #4aa36b;
+}
+
+.ravenclaw {
+    border-color: #4f80c9;
+}
+
+.hufflepuff {
+    border-color: #e8c75a;
+}
+
+
+/* =========================
+   LETTER
+========================= */
+
+.letter {
+    max-width: 750px;
+
+    margin: 40px auto;
+    padding: 40px;
+
+    background:
+        linear-gradient(
+            rgba(
+                20,
+                16,
+                30,
+                0.95
+            ),
+            rgba(
+                10,
+                10,
+                20,
+                0.95
+            )
+        );
+
+    border:
+        2px solid #e8c75a;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 0 30px
+        rgba(
+            232,
+            199,
+            90,
+            0.2
+        );
+
+    text-align: left;
+}
+
+.letter h2 {
+    text-align: center;
+    font-size: 27px;
+}
+
+.letter p {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.special {
+    text-align: center;
+
+    color: #f3d76c;
+    font-weight: bold;
+}
+
+.signature {
+    text-align: right;
+    margin-top: 30px;
+}
+
+
+/* =========================
+   SPELL
+========================= */
+
+.magic-button {
+    margin: 25px;
+}
+
+#spell {
+    opacity: 0;
+
+    transform:
+        scale(0.5);
+
+    color: #ffe477;
+
+    font-size: 30px;
+    font-weight: bold;
+
+    transition: 0.8s;
+
+    text-shadow:
+        0 0 10px #ffe477,
+        0 0 30px #ffe477;
+}
+
+#spell.show {
+    opacity: 1;
+
+    transform:
+        scale(1);
+}
+
+#spell small {
+    font-size: 17px;
+}
+
+
+/* =========================
+   EGGCELLS BUTTON
+========================= */
+
+.baby-button {
+    display: block;
+
+    margin: 25px auto;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8d77a,
+            #fff0b5,
+            #d9b64c
+        );
+
+    color: #241b08;
+
+    border:
+        3px solid #fff0a6;
+
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 0 15px #f8d77a,
+        0 0 35px
+        rgba(
+            248,
+            215,
+            122,
+            0.4
+        );
+
+    animation:
+        babyGlow 2s infinite alternate;
+}
+
+.baby-button:hover {
+    transform:
+        scale(1.1)
+        rotate(-1deg);
+
+    box-shadow:
+        0 0 25px #fff0a6,
+        0 0 50px #f8d77a;
+}
+
+
+/* =========================
+   BABY PICTURE GALLERY
+========================= */
+
+.baby-gallery {
+    display: none;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 25px;
+
+    max-width: 800px;
+
+    margin: 35px auto;
+
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            rgba(
+                25,
+                18,
+                35,
+                0.95
+            ),
+            rgba(
+                10,
+                10,
+                20,
+                0.95
+            )
+        );
+
+    border:
+        3px solid #e8c75a;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 0 30px
+        rgba(
+            232,
+            199,
+            90,
+            0.4
+        );
+
+    animation:
+        galleryAppear 0.8s ease;
+}
+
+.baby-gallery.show {
+    display: grid;
+}
+
+
+/* =========================
+   GALLERY BOX
+========================= */
+
+.gallery-box {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px;
+
+    overflow: hidden;
+
+    border:
+        2px solid
+        rgba(
+            212,
+            175,
+            55,
+            0.7
+        );
+
+    border-radius: 15px;
+
+    background:
+        rgba(
+            5,
+            3,
+            15,
+            0.9
+        );
+
+    box-shadow:
+        0 0 10px
+        rgba(
+            212,
+            175,
+            55,
+            0.2
+        );
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.gallery-box:hover {
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 0 15px #d4af37,
+        0 0 30px #8b5cf6;
+}
+
+
+/* =========================
+   SMALL SQUARE BABY PICTURES
+========================= */
+
+.gallery-box img {
+    width: 250px;
+    height: 250px;
+
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+
+    display: block;
+    margin: 0 auto;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.4s ease,
+        filter 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.gallery-box img:hover {
+    transform:
+        scale(1.08)
+        rotate(1deg);
+
+    filter: brightness(1.2);
+
+    box-shadow:
+        0 0 10px #fff,
+        0 0 25px #d4af37,
+        0 0 45px #8b5cf6;
+}
+
+.gallery-box p {
+    color: #f5df88;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 10px 0 5px;
+    letter-spacing: 1px;
+}
+/* =========================
+   MAGICAL IMAGE POPUP
+========================= */
+
+.image-modal {
+    position: fixed;
+    inset: 0;
+
+    background:
+        rgba(
+            0,
+            0,
+            20,
+            0.94
+        );
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.4s ease,
+        visibility 0.4s ease;
+
+    z-index: 9999;
+
+    backdrop-filter:
+        blur(8px);
+}
+
+.image-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* =========================
+   SQUARE POPUP IMAGE
+========================= */
+
+.full-image {
+    width: 500px;
+    height: 500px;
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+
+    border-radius: 20px;
+
+    border:
+        4px solid #d4af37;
+
+    box-shadow:
+        0 0 15px #fff,
+        0 0 35px #d4af37,
+        0 0 70px #8b5cf6;
+
+    animation:
+        magicalZoom 0.6s ease;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   POPUP ZOOM
+========================= */
+
+@keyframes magicalZoom {
+    0% {
+        transform:
+            scale(0.3)
+            rotate(-5deg);
+
+        opacity: 0;
+    }
+
+    60% {
+        transform:
+            scale(1.08)
+            rotate(2deg);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            scale(1)
+            rotate(0);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+.close-button {
+    position: absolute;
+
+    top: 25px;
+    right: 40px;
+
+    font-size: 50px;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    z-index: 10000;
+}
+
+.close-button:hover {
+    color: #d4af37;
+
+    transform:
+        rotate(90deg)
+        scale(1.2);
+}
+
+
+/* =========================
+   IMAGE CAPTION
+========================= */
+
+#imageCaption {
+    color: white;
+
+    font-size: 22px;
+
+    margin-top: 15px;
+
+    text-shadow:
+        0 0 10px #fff,
+        0 0 20px #d4af37;
+}
+
+
+/* =========================
+   SPARKLES
+========================= */
+
+.magic-sparkles {
+    position: absolute;
+
+    top: 12%;
+
+    font-size: 35px;
+
+    animation:
+        sparkleFloat 2s
+        infinite alternate;
+}
+
+@keyframes sparkleFloat {
+    from {
+        transform:
+            translateY(0)
+            scale(1);
+
+        opacity: 0.6;
+    }
+
+    to {
+        transform:
+            translateY(-15px)
+            scale(1.2);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    margin-top: 70px;
+
+    padding: 25px;
+
+    color: #d6c579;
+
+    border-top:
+        1px solid
+        rgba(
+            232,
+            199,
+            90,
+            0.4
+        );
+
+    line-height: 2;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+
+        transform:
+            scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+}
+
+@keyframes sparkle {
+    0%,
+    100% {
+        transform:
+            scale(1)
+            rotate(0deg);
+
+        opacity: 0.6;
+    }
+
+    50% {
+        transform:
+            scale(1.5)
+            rotate(180deg);
+
+        opacity: 1;
+    }
+}
+
+@keyframes glow {
+    from {
+        box-shadow:
+            0 0 10px #e8c75a;
+    }
+
+    to {
+        box-shadow:
+            0 0 35px #e8c75a,
+            0 0 60px
+            rgba(
+                232,
+                199,
+                90,
+                0.3
+            );
+    }
+}
+
+@keyframes babyGlow {
+    from {
+        box-shadow:
+            0 0 10px #f8d77a;
+    }
+
+    to {
+        box-shadow:
+            0 0 30px #fff0a6,
+            0 0 50px
+            rgba(
+                248,
+                215,
+                122,
+                0.5
+            );
+    }
+}
+
+@keyframes galleryAppear {
+    from {
+        opacity: 0;
+
+        transform:
+            scale(0.7)
+            translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+    }
+}
+
+
+/* =========================
+   TABLET / PHONE
+========================= */
+
+@media (max-width: 700px) {
+
+    .baby-gallery {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    .gallery-box img {
+        width: 100%;
+        height: auto;
+
+        aspect-ratio: 1 / 1;
+
+        object-fit: cover;
+    }
+}
+
+
+/* =========================
+   SMALL PHONE
+========================= */
+
+@media (max-width: 600px) {
+
+    .baby-gallery {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    .gallery-box {
+        width: 100%;
+    }
+
+    .gallery-box img {
+        width: 100%;
+        height: auto;
+
+        aspect-ratio: 1 / 1;
+
+        object-fit: cover;
+    }
+
+    .full-image {
+        width: 85vw;
+        height: 85vw;
+
+        aspect-ratio: 1 / 1;
+
+        object-fit: cover;
+
+        border-width: 3px;
+    }
+
+    .close-button {
+        top: 15px;
+        right: 20px;
+
+        font-size: 40px;
+    }
+
+    #imageCaption {
+        font-size: 18px;
+    }
+}
+
+
+/* =========================
+   VERY SMALL PHONE
+========================= */
+
+@media (max-width: 450px) {
+
+    .houses {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding-top: 50px;
+    }
+
+    .gallery-box img {
+        width: 100%;
+        height: auto;
+
+        aspect-ratio: 1 / 1;
+
+        object-fit: cover;
+    }
+
+    .full-image {
+        width: 88vw;
+        height: 88vw;
+
+        aspect-ratio: 1 / 1;
+
+        object-fit: cover;
+    }
+}
